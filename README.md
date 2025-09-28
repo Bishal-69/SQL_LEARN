@@ -3,7 +3,7 @@
 This repository contains SQL exercises and practice files to revise and strengthen my knowledge of SQL concepts.
 
 ## What’s Inside
-- **Phase 1:** Basic SQL queries (SELECT, WHERE, ORDER BY, etc.)
+- **Phase 1:** SQL DATA that we use to learn 
 - **Phase 2:** Aggregations and GROUP BY exercises
 - **Phase 3:** JOINS practice (INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN)
 - Additional practice on subqueries, indexes, and constraints.
