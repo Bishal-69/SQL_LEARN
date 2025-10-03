@@ -60,5 +60,5 @@ SELECT first_name, last_name ,'Highly Paid Employee' as Label              -- no
 from employee_salary
 WHERE Salary>70000
 
-order by first_name,last_name
+order by first_name,last_name       
 ;
