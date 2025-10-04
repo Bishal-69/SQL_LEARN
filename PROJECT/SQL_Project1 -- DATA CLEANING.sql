@@ -199,5 +199,12 @@ DELETE
 from layoffs_staging2
 where funds_raised is NUll
 AND percentage_laid_off is NULL;
+
+ALTER TABLE layoffs_staging2
+DROP column row_num;
+
+select * 
+from layoffs_staging2;
+
    
 
