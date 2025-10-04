@@ -6,6 +6,9 @@ select *
 from layoffs;
 
 
+SET SQL_SAFE_UPDATES = 0;  -- off the safe mode
+
+
 -- 1. Remove Duplicates
 -- 2.Standardize the data
 -- 3.NUll values or blank Values
@@ -87,7 +90,6 @@ INSERT INTO layoffs_staging2
     FROM layoffs_staging;
 
 
-SET SQL_SAFE_UPDATES = 0;  -- off the safe mode
 
 DELETE 
 from layoffs_staging2
@@ -161,19 +163,41 @@ from layoffs_staging2;
 -- __________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 -- removing NULL values or Blank values
+select * 
+from layoffs_staging2;
 
-select*
+
+select*                    --  gives which industry is null or bank
 from layoffs_staging2
 where (industry IS NULL OR industry = '') ;
 
 
-SELECT *
-FROM layoffs_staging2
-WHERE (percentage_laid_off IS NULL OR TRIM(percentage_laid_off) = '')
-  AND (funds_raised IS NULL OR TRIM(funds_raised) = '');
+UPDATE layoffs_staging2      
+SET industry = NULL
+WHERE industry = '';
 
-   
 
-   
+select*                     
+from layoffs_staging2
+where company LIke 'appsmith%';   -- checking if related company is available or not ( in this case not )
+
+
+UPDATE layoffs_staging2
+SET 
+    percentage_laid_off = NULLIF(percentage_laid_off, ''),
+    funds_raised = NULLIF(funds_raised, '');
+
+
+-- ____________________________________________________________________________________________________________________________________________________________________________________________________
+
+select *
+from layoffs_staging2
+where funds_raised is NUll
+AND percentage_laid_off is NULL;
+
+DELETE
+from layoffs_staging2
+where funds_raised is NUll
+AND percentage_laid_off is NULL;
    
 
